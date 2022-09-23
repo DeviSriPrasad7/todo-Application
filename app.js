@@ -136,7 +136,7 @@ app.put("/todos/:todoId/", async (request, response) => {
     FROM
       todo
     WHERE
-      id = '${todoId}';`;
+      id = ${todoId};`;
   const previousTodo = await db.get(updateTodo);
   const {
     todo = previousTodo.todo,
@@ -147,7 +147,7 @@ app.put("/todos/:todoId/", async (request, response) => {
             UPDATE
               todo
             SET
-              todo = '%${todo}'%,
+              todo = '${todo}',
               priority = '${priority}',
               status = '${status}'
             WHERE
